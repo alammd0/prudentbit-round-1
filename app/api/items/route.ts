@@ -13,8 +13,7 @@ export async function GET(req : Request){
         const sortParam = q.get("sort");
         const sort: "asc" | "desc" = sortParam === "desc" ? "desc" : "asc";
         const offset = (page - 1) * limit;
-
-        // here read the data from the file
+        
         const data = await readJsonData();
 
         // console.log(data);
@@ -24,12 +23,9 @@ export async function GET(req : Request){
             page,
             sort
         });
-
-        // console.log(filteredData);
-
     
          const total = filteredData.length;
-        //  console.log(total);
+
          const items = filteredData.slice(offset, offset + limit);
 
 
@@ -40,8 +36,6 @@ export async function GET(req : Request){
             limit,
             sort
         };
-
-        // console.log(response);
 
         return NextResponse.json({
             data : response
