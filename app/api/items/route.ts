@@ -4,36 +4,31 @@ import { NextResponse } from "next/server";
 
 export async function GET(req : Request){
     try{
-        // here write the logic to sort, searching, filtering 
         const url = new URL(req.url);
         const q = url.searchParams
         const search = q.get("search") || "";
-        const limit = Number(q.get("limit")) || 10;
+        const perPage = Number(q.get("perPage")) || 15;
         const page = Number(q.get("page")) || 1;
         const sortParam = q.get("sort");
         const sort: "asc" | "desc" = sortParam === "desc" ? "desc" : "asc";
-        const offset = (page - 1) * limit;
         
         const data = await readJsonData();
 
-        // console.log(data);
         const filteredData = filterAndSort(data, {
             search,
-            limit,
-            page,
             sort
         });
     
          const total = filteredData.length;
-
-         const items = filteredData.slice(offset, offset + limit);
+         const offset = (page - 1) * perPage;
+         const items = filteredData.slice(offset, offset + perPage);
 
 
         const response = {
             items,
             total,
             page,
-            limit,
+            perPage,
             sort
         };
 

@@ -21,3 +21,10 @@ export type Options = {
     page?: number,
     sort?: "asc" | "desc"
 }
+
+export type fetchArgs = {
+    search : string,
+    page : number,
+    perPage : number,
+    sort : "asc" | "desc"
+}
