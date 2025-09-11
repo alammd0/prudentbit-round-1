@@ -32,8 +32,8 @@ npm install -g pnpm
 
 1.  Clone the repo
     ```sh
-all-complete-with-reponsive
-   git clone [https://github.com/alammd0/prudentbit-round-1.git]
+        all-complete-with-reponsive
+       git clone [https://github.com/alammd0/prudentbit-round-1.git]
     ```
 2.  Install PNPM packages
     ```sh
