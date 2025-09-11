@@ -7,6 +7,7 @@ let data : Item[] | null = null;
 export async function readJsonData(): Promise<Item[]> {
     try{
         
+        
         if(data){
             return data;
         };
@@ -17,7 +18,8 @@ export async function readJsonData(): Promise<Item[]> {
         data = JSON.parse(jsonString) as Item[];
         return data;
     }
-    catch(error : any){
+    catch(error){
+        console.error(error);
         throw new Error("Server Error, While fetching the Data..");
     }
 }

@@ -41,10 +41,10 @@ export async function GET(req : Request){
             status : 200
         })
     }
-    catch(error : any){
+    catch(error){
+        console.error(error);
         return NextResponse.json({
-            message : "Server Error, While fetching the Data..",
-            error : error.message || error
+            message : "Server Error, While fetching the Data.."
         }, {
             status : 500
         })
