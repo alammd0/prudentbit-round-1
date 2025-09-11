@@ -27,21 +27,10 @@ function matchesSearch(item : Item, q : string){
 
 export function filterAndSort(all : Item[], options : Options){
 
-    // console.log("Test - 00", all);
-
-    const { search, limit, page, sort } = options;
-    // console.log(search, limit, page, sort);
-
-    // filter
-    const safeLimit = limit ?? 10;
-    const safePage = page ?? 1;
-    const offset = (safePage - 1) * safeLimit;
+    const { search, sort } = options;
 
     let arr = all.filter((item) => matchesSearch(item, search ?? ""));
-
-    // console.log("Test - 01", arr);
-
-
+    
     if (sort === "asc") {
         arr = arr.sort((a, b) => {
             return (
@@ -64,5 +53,5 @@ export function filterAndSort(all : Item[], options : Options){
         arr = arr.sort((a, b) => a.patient_id - b.patient_id);
     }
 
-    return arr.slice(offset, offset + safeLimit);
+    return arr;
 }
