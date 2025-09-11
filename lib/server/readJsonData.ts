@@ -7,6 +7,7 @@ let data : Item[] | null = null;
 export async function readJsonData(): Promise<Item[]> {
     try{
         
+        
         if(data){
             return data;
         };
