@@ -9,7 +9,7 @@ function matchesSearch(item : Item, q : string){
     q = q.toLowerCase();
     
     const searchWords = []
-
+    
     if (item.patient_name) {
         searchWords.push(item.patient_name.toLowerCase());
     }
@@ -26,31 +26,29 @@ function matchesSearch(item : Item, q : string){
 }
 
 export function filterAndSort(all : Item[], options : Options){
-
     const { search, sort } = options;
-
     let arr = all.filter((item) => matchesSearch(item, search ?? ""));
-    
+
     if (sort === "asc") {
         arr = arr.sort((a, b) => {
             return (
-            a.patient_name.localeCompare(b.patient_name) ||
-            a.age - b.age ||
+            (a.patient_name ?? "").localeCompare(b.patient_name ?? "") ||
+            ((a.age ?? 0) - (b.age ?? 0)) ||
             (a.medical_issue ?? "").localeCompare(b.medical_issue ?? "") ||
-            a.patient_id - b.patient_id
+            (a.patient_id ?? 0) - (b.patient_id ?? 0)
             );
         });
     } else if (sort === "desc") {
         arr = arr.sort((a, b) => {
             return (
-            b.patient_name.localeCompare(a.patient_name) ||
-            b.age - a.age ||
+            (b.patient_name ?? "").localeCompare(a.patient_name ?? "") ||
+            ((b.age ?? 0) - (a.age ?? 0)) ||
             (b.medical_issue ?? "").localeCompare(a.medical_issue ?? "") ||
-            b.patient_id - a.patient_id
+            (b.patient_id ?? 0) - (a.patient_id ?? 0)
             );
         });
     } else {
-        arr = arr.sort((a, b) => a.patient_id - b.patient_id);
+        arr = arr.sort((a, b) => (a.patient_id ?? 0) - (b.patient_id ?? 0));
     }
 
     return arr;

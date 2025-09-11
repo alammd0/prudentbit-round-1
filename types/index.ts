@@ -1,18 +1,18 @@
 
 
 export type Item = {
-    patient_id : number,
-    patient_name : string,
-    age : number,
-    photo_url : string,
-    contact : Contact[],
-    medical_issue : string
+    patient_id? : number,
+    patient_name? : string,
+    age? : number,
+    photo_url? : string,
+    contact? : Contact[],
+    medical_issue? : string
 }
 
 export type Contact = {
-    address : string,
-    number : string,
-    email : string
+    address? : string,
+    number? : string,
+    email? : string
 }
 
 export type Options = {
@@ -23,8 +23,13 @@ export type Options = {
 }
 
 export type fetchArgs = {
-    search : string,
-    page : number,
-    perPage : number,
-    sort : "asc" | "desc"
+    all? : boolean,
+    search? : string,
+    page? : number,
+    perPage? : number,
+    sort? : "asc" | "desc"
+}
+
+export type CardProps = {
+    item : Item
 }

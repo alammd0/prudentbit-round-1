@@ -10,7 +10,7 @@ export default function Appbar(){
                     <p className="font-normal text-xl text-white">1000 Patients Found</p>
                 </div>
             </div>
-            <div className="absolute right-0 top-0 h-[85px] w-[40%] z-50" style={{
+            <div className="absolute hidden md:block right-0 top-0 h-[85px] w-[40%] z-50" style={{
                 backgroundImage : "url('/img.png')",
                 backgroundSize : "cover",
                 backgroundPosition : "center",
