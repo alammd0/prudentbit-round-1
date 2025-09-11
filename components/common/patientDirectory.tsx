@@ -139,7 +139,7 @@ export default function PatientDirectory(){
 
     useEffect(() => {
         fetchItems();
-    }, [search, page]);
+    }, [search, page, sort]);
 
     return (
         <div className="px-10 py-5">
@@ -236,7 +236,6 @@ export default function PatientDirectory(){
                     </div>  
                </div>
             </div>
-            <hr />
         </div>
     )
 } 
