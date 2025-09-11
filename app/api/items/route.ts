@@ -5,9 +5,12 @@ import { NextResponse } from "next/server";
 export async function GET(req : Request){
     try{
         const url = new URL(req.url);
+
+        console.log(url);
+
         const q = url.searchParams
         const search = q.get("search") || "";
-        const perPage = Number(q.get("perPage")) || 15;
+        const perPage = Number(q.get("perPage")) || 16;
         const page = Number(q.get("page")) || 1;
         const sortParam = q.get("sort");
         const sort: "asc" | "desc" = sortParam === "desc" ? "desc" : "asc";
