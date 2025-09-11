@@ -32,7 +32,7 @@ npm install -g pnpm
 
 1.  Clone the repo
     ```sh
-    git clone https://github.com/your_username_/your_project_name.git
+    git clone [https://github.com/alammd0/prudentbit-round-1.git]
     ```
 2.  Install PNPM packages
     ```sh
